@@ -1,0 +1,73 @@
+<p align="center">
+  <img src="./docs/aws.jpg" alt="LocalStack" height="80"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="./docs/db.webp" alt="AWS" height="80"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="./docs/docker.png" alt="AWS" height="80"/>
+  &nbsp;&nbsp;&nbsp;
+</p>
+
+# 🚀 Começando Agente de IA do Zero
+
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/tvlemes/localstack_dynamodb/blob/main/LICENSE)
+![Dynamodb](https://img.shields.io/badge/AWS-Dynamodb-blue?logo=amazons3)
+![Docker](https://img.shields.io/badge/Docker-Running-green?logo=docker)
+![LocalStack](https://img.shields.io/badge/LocalStack-Concluído-green.svg)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+[![Status](https://img.shields.io/badge/Status-Concluído-green.svg)]()
+
+## ⚙️ Criando o Ambiente Virtual Python
+
+Para criar o Ambiente Virtual Python digite os comandos abaixo
+
+```
+# Cria o Ambiente Virtual
+python -m venv .venv
+
+# Ativa o Ambiente Virtual
+.venv\Scripts\activate
+
+# Desativandoo o Ambiente Virtual
+deactivate
+```
+
+## 🛠️ Comando para criar o Docker, instalar as dependências e acessá-lo:
+
+```
+# Cria o Docker
+docker compose up -d
+
+# Instala as dependências
+pip install -r requirements.txt
+
+# Acessando um docker:
+docker exec -it nome_do_container bash
+```
+
+## 📁 Arquivos
+
+* app/models/article.py - Modelo responsável por representar um artigo, dados do objeto;
+* app/database/dynamodb.py - Módulo responsável pela comunicação com o DynamoDB;
+* create_table.py - Cria a tabela articles no DynamoDB;
+* article_spider.py - Spider responsável por realizar a busca de artigos na internet;
+* agent.py - Agente responsável por interpretar a solicitação do usuário;
+* pipeline.py - Responsável por receber cada artigo extraídoe armazená-lo no DynamoDB;
+* settings.py - Configurações globais do Scrapy;
+* app/services/article_service.py - Camada de serviço responsável por coordenar:
+Agente
+    ↓
+Scrapy
+    ↓
+DynamoDB
+* streamlit.py - Interface web do Agente de IA.
+
+## Rodando o APP
+
+Passos:
+```
+docker compose up -d
+
+python scripts/create_table.py
+
+streamlit run streamlit_app.py
+```

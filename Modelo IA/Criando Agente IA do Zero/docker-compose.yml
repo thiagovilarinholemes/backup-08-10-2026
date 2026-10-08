@@ -1,0 +1,36 @@
+services:
+
+  # =======================================================
+  # LocalStack
+  # =======================================================
+
+  localstack:
+
+    image: localstack/localstack:latest
+
+    container_name: agente_ia_localstack
+
+    ports:
+      - "4566:4566"
+
+    environment:
+
+      # Somente o DynamoDB será utilizado.
+      - SERVICES=dynamodb
+
+      # Região AWS.
+      - AWS_DEFAULT_REGION=us-east-1
+
+      # Desabilita logs excessivos.
+      - DEBUG=0
+
+      # Token de autenticação do LocalStack.
+      - LOCALSTACK_AUTH_TOKEN=ls-FAtuneQI-Bica-Poru-4263-8388KOfO2f2a
+
+    volumes:
+
+      # Persistência dos dados.
+      - "./.localstack:/var/lib/localstack"
+
+      # Permite executar scripts de inicialização.
+      - "./localstack:/etc/localstack/init/ready.d"

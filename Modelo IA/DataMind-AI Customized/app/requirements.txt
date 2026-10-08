@@ -1,0 +1,12 @@
+streamlit
+pandas
+openpyxl
+pyarrow
+plotly
+duckdb
+python-dotenv
+huggingface_hub
+langgraph
+langchain
+langchain-huggingface
+pytest
